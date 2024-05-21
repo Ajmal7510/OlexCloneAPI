@@ -1,0 +1,29 @@
+package com.olx.api.olxcloneapi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@SpringBootApplication
+public class OlxcloneapiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OlxcloneapiApplication.class, args);
+	}
+
+
+	@Bean
+	public WebMvcConfigurer corsConfigures() {
+		return new WebMvcConfigurer() {
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedMethods("*")
+						.allowedOrigins("http://localhost:3000");
+			}
+
+		};
+	}
+
+}
